@@ -1004,30 +1004,6 @@ else:
 # ─────────────────────────────────────────────
 st.sidebar.header("🔍 Filters")
 
-# ── Job list debug (temporary — remove once matching works) ──────────────────
-if job_df is not None:
-    with st.sidebar.expander("🔬 Job List Debug", expanded=True):
-        st.caption(f"job_df rows: {len(job_df)}")
-        st.caption(f"job_df cols: {list(job_df.columns)}")
-        if "Date_Only" in job_df.columns:
-            jd = job_df["Date_Only"].dropna()
-            st.caption(f"Job dates: {jd.min()} → {jd.max()} ({len(jd)} rows)")
-            st.caption(f"Date type: {jd.dtype}")
-        if "Date_Only" in df.columns:
-            dd = df["Date_Only"].dropna()
-            st.caption(f"Diesel dates: {dd.min()} → {dd.max()}")
-            st.caption(f"Date type: {dd.dtype}")
-        if "Vehicle No" in job_df.columns:
-            jv = sorted(job_df["Vehicle No"].dropna().unique())[:5]
-            st.caption(f"Job vehs: {jv}")
-        if "Vehicle No" in df.columns:
-            dv = sorted(df["Vehicle No"].dropna().unique())[:5]
-            st.caption(f"Diesel vehs: {dv}")
-        if "Site" in job_df.columns:
-            js = sorted(job_df["Site"].dropna().unique())[:5]
-            st.caption(f"Sites: {js}")
-else:
-    st.sidebar.caption("⚠️ job_df is None")
 
 # ── Active Reports panel ─────────────────────────────────────────────────────
 # Each loaded report can be toggled on/off independently.
